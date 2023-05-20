@@ -1,0 +1,12 @@
+ <div *ngFor="let card of buttons" class="card" [ngClass]="card.bg_color">
+    <div class="flexcolomn">
+        <div class="name">{{card.title}}</div>
+        <div class="quantity"><span>{{card.quantity}}</span> Quantity</div>
+    </div>
+    <div class="flexcolomn">
+
+      <div class="icon">        <img  src="{{card.icon}}">
+</div>
+        <img *ngIf="card.open_arrow" class="open_arrow" src="assets/arrow-left.svg">
+    </div>
+</div>

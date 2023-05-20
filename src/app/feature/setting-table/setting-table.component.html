@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="checkbox"> <input  class="checkbox-custom" name="checkbox-1" id="checkbox-1" type="checkbox">
+
+        <label for="checkbox-1" class="checkbox-custom-label"> </label>
+    </div>
+    <div class="company">
+        <div class="title">Company</div>
+        <div class="options">Search</div>
+
+    </div>
+    <div class="status">
+        <div class="title">Status
+            <img src="assets/counter.svg">
+
+        </div>
+        <div class="options">All
+            <img src="assets/ic_arrow_drop_down.svg">
+        </div>
+    </div>
+    <div class="type">
+        <div class="title">Type
+            <img src="assets/counter.svg">
+
+        </div>
+        <div class="options">All
+            <img src="assets/ic_arrow_drop_down.svg">
+
+        </div>
+    </div>
+    <div class="sku">
+        <div class="title">SKU</div>
+        <div class="options">Search
+        </div>
+    </div>
+    <div class="contact">
+        <div class="title">Contact</div>
+        <div class="options">Search
+        </div>
+    </div>
+    <div class="price">
+        <div class="title">Price
+            <img src="assets/counter.svg">
+
+        </div>
+        <div class="options">USD
+            <img src="assets/ic_arrow_drop_down.svg">
+
+        </div>
+    </div>
+    <div class="action">
+        <div class="title">Action</div>
+        <div class="options"></div>
+    </div>
+</div>
+<hr>
+<div class="row row_users" *ngFor="let corp of data  index as index">
+    <div class="checkbox"> <input  class="checkbox-custom" name="checkbox-1" id={{index}} type="checkbox">
+
+        <label for="{{index}}" class="checkbox-custom-label"> </label>
+    </div>
+    <div class="company">
+        <img src="{{corp.companyphoto}}">
+         <div class="text"> {{corp.name}} </div> 
+
+    </div>
+    <div class="status" [ngClass]="corp.status">
+        <div class="text">{{corp.status}}</div>
+    </div>
+    <div class="type">
+        <div class="text"> {{corp.tybe}}</div>
+
+    </div>
+    <div class="sku">
+        <div class="text">{{corp.SKU}}</div>
+
+    </div>
+    <div class="contact">
+             <img src="  {{corp.contactphoto}}">
+             <div class="text"> {{corp.contactname}}</div>
+         
+        
+    </div>
+    <div class="price">
+        <div class="text">{{corp.price}} USD</div>
+          
+    </div>
+    <div class="action">
+        
+    </div>
+</div>

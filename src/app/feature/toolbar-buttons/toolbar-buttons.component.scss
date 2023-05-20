@@ -1,0 +1,145 @@
+:host {
+    position: relative;
+    display: flex;
+    padding: 0 24px 17px 0;
+    border-radius: 6px;
+    flex-wrap: wrap;
+   min-height: 117px;
+   box-sizing: border-box;
+   background-color: #2B2B4B;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    margin-top: 17px ;
+    
+     width: calc(23% - 42px);
+    justify-content: space-between;
+  min-width: fit-content;
+    flex-grow: 1;
+    padding: 5px;
+    border-radius: 12px;
+  
+      @media screen  and (min-width: 640px){
+        padding-top: 13px;
+    padding-left: 26px;
+    padding-right: 13px;
+    padding-bottom: 15px;
+ 
+    }
+}
+
+.flexcolomn {
+    position: relative;
+    display: flex;
+    max-width: 50%;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.flexcolomn+.flexcolomn {
+    margin-left: 10px;
+}
+
+.card  {
+    margin-left: 14px;
+}
+
+.name {
+    position: relative;
+    display: block;
+    padding-bottom: 6px;
+    text-overflow: ellipsis;
+   white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+      color: #FFFFFF;
+   
+
+}
+
+.name:hover {
+    overflow: visible;
+
+}
+
+.quantity {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+ 
+    color: #FFFFFF;
+
+    span {
+        position: relative;
+        display: flex;
+
+
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+ 
+        color: #FFFFFF;
+
+    }
+}
+
+.icon {
+    position: relative;
+    display: flex;
+    width: 26px;
+    height: 26px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    justify-content: center;
+
+    img {
+        width: 15px;
+        height: 15p;
+    }
+
+}
+
+.icon:active {
+    border: 1px solid #0099ff00;
+}
+
+.open_arrow {
+    position: relative;
+    display: flex;
+    align-self: end;
+}
+
+.open_arrow:active {
+    border: 1px solid #0099ff00;
+}
+
+.red {
+    background: linear-gradient(89.69deg, #F39034 2.03%, #FF2727 99.73%);
+    box-shadow: 4px 4px 10px rgba(244, 144, 53, 0.3);
+}
+
+.blue {
+    background: linear-gradient(270deg, #003AD2 0%, #0097EC 100%);
+    box-shadow: 4px 4px 10px rgba(1, 149, 236, 0.3);
+}
+
+.green {
+    background: linear-gradient(270.23deg, #00A843 0.19%, #1FD071 99.8%);
+    box-shadow: 4px 4px 10px rgba(31, 208, 112, 0.3);
+}
+
+.purple {
+    background: linear-gradient(269.97deg, #5900C9 0.02%, #9852F0 99.98%);
+    box-shadow: 4px 4px 10px rgba(151, 80, 239, 0.3);
+}

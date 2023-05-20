@@ -1,0 +1,40 @@
+<nav>
+  <a *ngIf="!cardActivate" [routerLink]="['./',{outlets:{user_card:['user-card']}}]">Show Profile</a>
+  <a *ngIf="cardActivate" [routerLink]="['./',{outlets:{user_card:null}}]">Hide Profile</a>
+
+  <a *ngIf="!taskActivate" [routerLink]="['./',{outlets:{user_task:['user-task']}}]">Show Menu</a>
+  <a *ngIf="taskActivate" [routerLink]="['./',{outlets:{user_task:null}}]">Hide Menu</a>
+
+  <a *ngIf="!toolbarActivate" [routerLink]="['./',{outlets:{toolbar:['toolbar_open']}}]">Show Toolbar</a>
+  <a *ngIf="toolbarActivate" [routerLink]="['./',{outlets:{toolbar:null}}]">Hide Toolbar</a>
+
+  <a *ngIf="!statsActivate" [routerLink]="['./',{outlets:{stats:['stats']}}]">Show Statistics</a>
+  <a *ngIf="statsActivate" [routerLink]="['./',{outlets:{stats:null}}]">Hide Statistics</a>
+
+  <a *ngIf="!visitsActivate" [routerLink]="['./',{outlets:{visits:['visits']}}]">Show Statistics</a>
+  <a *ngIf="visitsActivate" [routerLink]="['./',{outlets:{visits:null}}]">Hide Statistics</a>
+
+  <a *ngIf="!settingsActivate" [routerLink]="['./',{outlets:{settings:['settings']}}]">Show settings</a>
+  <a *ngIf="settingsActivate" [routerLink]="['./',{outlets:{settings:null}}]">Hide settings</a>
+</nav>
+<aside> <router-outlet (activate)="cardActivate=true" (deactivate)="cardActivate=false"
+    name="user_card"></router-outlet>
+  <router-outlet (activate)="taskActivate=true" (deactivate)="taskActivate=false" name="user_task"></router-outlet>
+</aside>
+<main>
+
+  <router-outlet (activate)="toolbarActivate=true" (deactivate)="toolbarActivate=false" name="toolbar"></router-outlet>
+  <div class="wrap" [style.width.%]="100">
+    <div class="stats">
+      <router-outlet (activate)="statsActivate=true" (deactivate)="statsActivate=false" name="stats"></router-outlet>
+    </div>
+    <div class="visits"><router-outlet (activate)="visitsActivate=true" (deactivate)="visitsActivate=false"
+        name="visits"></router-outlet>
+    </div>
+  </div>
+ <div>
+  <router-outlet (activate)="settingsActivate=true" (deactivate)="settingsActivate=false"
+    name="settings"></router-outlet>
+</div>
+</main>
+<router-outlet></router-outlet>

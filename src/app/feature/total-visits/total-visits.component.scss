@@ -1,0 +1,56 @@
+:host {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+    padding-left: 20px;
+    padding-right: 43px;
+    padding-bottom: 20px;
+    background: #2B2B4B;
+    border-radius: 6px;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.filter {
+    position: relative;
+    display: block;
+    max-height: 30px;
+}
+
+.name {
+    position: relative;
+    display: flex;
+    font-family: 'DINPro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+
+
+    color: #FFFFFF;
+}
+
+.month {
+    position: relative;
+    display: flex;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgba(235, 235, 245, 0.3);
+
+}
+
+.canvas,
+canvas {
+    padding-top: 30px;
+    position: relative;
+    align-self: start;
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    padding-bottom: 20px;
+
+}

@@ -1,0 +1,14 @@
+<div class="task_header">
+    <div class="name">Task</div>
+    <div class="quantity">16</div>
+</div>
+<hr>
+<div *ngFor="let task of tasks" class="task active">
+    <div class="icon_tabname">
+        <img src="{{task.icon}}">
+        <span>{{task.title }}</span>
+
+    </div>
+    <div *ngIf="task.quantity!='0'" class="quantity">{{task.quantity }}</div>
+
+</div>

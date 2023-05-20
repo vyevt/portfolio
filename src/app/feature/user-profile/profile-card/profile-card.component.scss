@@ -1,0 +1,103 @@
+:host {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 117px;
+    border-radius: 6px;
+    background-color: #2B2B4B;
+padding: 5px 15px;
+}
+.name_photo{
+    position: relative;
+    display: flex;   justify-content: center; flex-wrap: wrap;
+
+}
+.user_photo {
+    position: relative;
+    display: flex;
+    min-width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    box-sizing: border-box;
+ margin-bottom: 15px;
+    width: 55px;
+    height: 55px;
+    margin-left: 15px;
+    margin-right: 25px;
+    align-self: center;
+    background: #C4C4C4;
+    border: 3px solid #FFFFFF;
+
+}
+
+.name_status {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+
+}
+
+.user_name {
+    /* Jakeman Mangkoler */
+
+    position: relative;
+    display: flex;
+    align-self: center;
+    width: 166px;
+    height: 25px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    /* identical to box height */
+
+    color: #FFFFFF;
+
+
+}
+
+.user_status {
+    /* online */
+
+    position: relative;
+    display: flex;
+    min-width: 40px;
+    height: 19px;
+
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+    color: #45C86D;
+
+
+}
+
+.arrow_down {
+    /* Iconly/Light/Arrow - Down 4 */
+
+    position: relative;
+    display: flex;
+    width: 24px;
+    height: 24px;
+    margin-left: 9px;
+    margin-right: 18px;
+    align-self: center;
+
+
+
+
+}
+@media screen and (max-width:640px){
+    :host{
+        flex-direction: column;
+        justify-content: center;
+        padding:10px 0 ;
+    }
+}
