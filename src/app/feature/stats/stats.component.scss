@@ -66,16 +66,35 @@
   position: relative;
   display: flex;
  width: 100%;
-      background-color: #f1a00a;
- border-radius: 5px;
+     height: fit-content;
+  border-radius: 5px;
       justify-content: center;
  }
 
- ngx-charts-pie-chart{
+ 
+ canvas{
   position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
- }
+ width: 100%;
+ display: flex;
+  }  
 
 
+
+
+.red {
+  background: linear-gradient(89.69deg, #F39034 2.03%, #FF2727 99.73%);
+  box-shadow: 4px 4px 10px rgba(244, 144, 53, 0.3);
+}
+
+.blue {
+  background: linear-gradient(270deg, #003AD2 0%, #0097EC 100%);
+  box-shadow: 4px 4px 10px rgba(1, 149, 236, 0.3);
+}
+
+.green {
+  background: linear-gradient(180deg, #2FFC8D 0%, #05AB48 100%);
+}
+
+.purple {
+  background: linear-gradient(180deg, #944CEE 0%, #5D04CB 100%);
+}

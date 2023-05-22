@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { StatsRoutingModule } from './stats-routing.module';
 import { StatsComponent } from './stats.component';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -13,9 +13,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   imports: [
     CommonModule,
     StatsRoutingModule,
-    NgxChartsModule,
-
+ NgChartsModule
   ],
-  schemas: [ ]
+  schemas: []
 })
 export class StatsModule { }

@@ -1,8 +1,26 @@
+<!-- <p>total-visits works!</p> -->
+  <!-- <div class="filter">
+    <div class="name">Total visits</div>
+    <div class="month">
+        Month
+        <div class="calendar"></div></div>
 
-   <canvas baseChart width="500" height="400"
-    [type]="'line'"
-    [data]="lineChartData"
-    [options]="lineChartOptions"
-    [legend]="lineChartLegend"
-    
-    ></canvas>   
+</div>  
+  <div class="chart">
+    <svg>
+        <g class="xAsis">
+            <text></text>
+        </g>
+        <g class="YAsis">
+            <text></text>
+
+        </g>
+    </svg>
+</div>
+ 
+ --><canvas id="canvas" baseChart class="chart"
+ [data]="lineChartData"
+ [options]="lineChartOptions"
+ [type]="lineChartType"
+ (chartHover)="chartHovered($event)"
+ (chartClick)="chartClicked($event)"></canvas>

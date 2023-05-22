@@ -1,134 +1,203 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ChartArea, ChartConfiguration, ChartOptions, ChartType } from "chart.js";
+import { Component, OnInit, ViewChild, signal } from '@angular/core';
+import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+
+import * as Annotation from 'chartjs-plugin-annotation';
 
 @Component({
-  selector: 'csgo-total-visits',
+  selector: 'app-total-visits-chart',
   templateUrl: './total-visits.component.html',
   styleUrls: ['./total-visits.component.scss']
 })
-export class TotalVisitsComponent {
- 
-  showLegend: boolean = true;
-  showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Year';
-  showYAxisLabel: boolean = true;
-  yAxisLabel: string = 'Population';
+export class TotalVisitsComponent implements OnInit {
+  private newLabel?= 'New label';
 
-  public lineChartData: ChartConfiguration<'line'>['data'] = {
-    labels: [
-      '2019',
-      '2018',
-      '2017',
-      '2016',
-      '2015',
-      '2014',
-      '2013',
-      
-    ],
+  constructor() {
+    Chart.register(Annotation)
+  } canvas: any
+
+  ngOnInit() {
+    this.canvas = document.getElementById('canvas');
+    this.ctx = this.canvas.getContext('2d');
+
+
+  }
+
+  width: any
+  height: any;
+
+  getGradient(ctx: any, chartArea: any, colors: any, gradient: any
+  ) {
+    const chartWidth = chartArea.right - chartArea.left;
+    const chartHeight = chartArea.bottom - chartArea.top;
+    if (!gradient || this.width !== chartWidth || this.height !== chartHeight) {
+      // Create the gradient because this is either the first render
+      // or the size of the chart has changed
+      this.width = chartWidth;
+      this.height = chartHeight;
+      gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+      gradient.addColorStop(0, colors[0]);
+      gradient.addColorStop(1, colors[1]);
+    }
+
+    return gradient;
+  }
+  gradient1 = {
+    colors: ['rgba(132, 64, 238, 0.66)', 'rgba(253, 116, 155, 0.36)'],
+    value: ""
+  }
+
+  gradient2 = {
+    colors: ['rgba(252, 189, 119, 0)', 'rgba(253, 121, 179, 1)'],
+    value: ""
+  }
+
+
+
+
+  ctx: any = {}
+  public lineChartData: ChartConfiguration['data'] = {
     datasets: [
+
       {
-        data: [55, 50, 50, 60, 50, 40, 60],
-        label: 'This month',
-        fill: true,
-        tension: 0.5,
-        backgroundColor: function(context) {
+        data: [28, 48, 40, 19, 86, 27, 90],
+        yAxisID: 'y1',
+   
+         label: 'Profit',
+        backgroundColor: (context: { chart: any }) => {
           const chart = context.chart;
-          const {ctx, chartArea} = chart;
-  
+          const { ctx, chartArea } = chart;
+
           if (!chartArea) {
-            // This case happens on initial chart load
+            // This case happens on the initial chart load
             return;
           }
-          let gradient:any
-          let width:any
-          let height:any
-   
-          const chartWidth = chartArea.right - chartArea.left;
-          const chartHeight = chartArea.bottom - chartArea.top;
-          if (! gradient ||  width !== chartWidth ||  height !== chartHeight) {
-            // Create the gradient because this is either the first render
-            // or the size of the chart has changed
-            width = chartWidth;
-            height = chartHeight;
-            gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-            gradient.addColorStop(0, "#FD79B3"      );
-            gradient.addColorStop(1, " #FCBD77")
-     }   
-        
-        
-          return gradient
-   } },
-   {
-    data: [65, 59, 60, 81, 56, 55, 40],
-    label: 'Profit',
-    fill: true,
-    tension: 0.5,
-    backgroundColor: function(context) {
-      const chart = context.chart;
-      const {ctx, chartArea} = chart;
 
-      if (!chartArea) {
-        // This case happens on initial chart load
-        return;
+          return this.getGradient(ctx,
+            chartArea, this.gradient1.colors, this.gradient1.value);
+        },
+        borderColor: 'rgba(77,83,96,0)',
+        pointBackgroundColor: 'rgba(77,83,96,1)',
+        pointBorderColor: 'green',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(77,83,96,1)',
+        fill: 'origin',
+      },
+      {
+        data: [180, 480, 770, 90, 80, 270, 400],
+        label: 'Users',
+        yAxisID: 'y1',
+        backgroundColor: (context: { chart: any }) => {
+          const chart = context.chart;
+          const { ctx, chartArea } = chart;
+
+          if (!chartArea) {
+            // This case happens on the initial chart load
+            return;
+          }
+
+          return this.getGradient(ctx, chartArea, this.gradient2.colors, this.gradient2.value);
+        },
+        borderColor: 'rgba(77,83,96,0)',
+        pointBackgroundColor: 'rgba(148,159,177,1)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+        fill: 'origin',
       }
-      let gradient:any
-      let width:any
-      let height:any
-
-      const chartWidth = chartArea.right - chartArea.left;
-      const chartHeight = chartArea.bottom - chartArea.top;
-      if (! gradient ||  width !== chartWidth ||  height !== chartHeight) {
-        // Create the gradient because this is either the first render
-        // or the size of the chart has changed
-        width = chartWidth;
-        height = chartHeight;
-        gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-        gradient.addColorStop(0.36, "rgba(132, 64, 238, 0.66)");
-        gradient.addColorStop(0.66, "rgba(253, 116, 155, 0.36)");
-       }   
-    
-    
-      return gradient
-} }, ]
+    ],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July']
   };
-  width:any
-  height:any
-  gradient:any
-  
-  getGradient(ctx:CanvasRenderingContext2D, chartArea:ChartArea) {
-  const chartWidth = chartArea.right - chartArea.left;
-  const chartHeight = chartArea.bottom - chartArea.top;
-  if (!this.gradient || this.width !== chartWidth || this.height !== chartHeight) {
-    // Create the gradient because this is either the first render
-    // or the size of the chart has changed
-    this.width = chartWidth;
-    this.height = chartHeight;
-    this.gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-    this.gradient.addColorStop(0, "rgba(132, 64, 238, 0.66)");
-    this.gradient.addColorStop(0.5, "rgba(253, 116, 155, 0.36)");
-   }   
 
+  public lineChartOptions: ChartConfiguration['options'] = {
+    elements: {
+      line: {
+        tension: 0.5
+      }
+    },
+            maintainAspectRatio: false,
+responsive:true,
+    scales: {
+      // We use this empty structure as a placeholder for dynamic theming.
+      /* y:
+      {
+        position: 'left',
+      }, */
+      y1: {
+        position: 'left',
+        grid: {
+          color: 'rgba(255,0,0,0.3)',
+        },
+        ticks: {
+          color: 'green'
+        }
+      } 
+    },
 
-  return this.gradient }
-  public lineChartOptions: ChartOptions<'line'> = {
-  responsive: true,
-        interaction: {
-    mode: 'index',
-   },
-   plugins: {
-    title: {
-      display: true,
-      text: 'Chart.js Line Chart - Multi Axis'
+    plugins: {
+      legend: { display: true },
+      annotation: {
+        annotations: [
+          {
+            type: 'line',
+            scaleID: 'x',
+            value: 'March',
+            borderColor: 'orange',
+            borderWidth: 2,
+            label: {
+              display: true,
+              position: 'center',
+              color: 'orange',
+              content: 'LineAnno',
+              font: {
+                weight: 'bold'
+              }
+            }
+          },
+        ],
+      }
     }
-  } 
-}
-  public lineChartLegend = true;
+  };
 
-constructor() {
-}
+  public lineChartType: ChartType = 'line';
 
-ngOnInit() {
-}
+  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
+  private static generateNumber(i: number): number {
+    return Math.floor((Math.random() * (i < 2 ? 100 : 1000)) + 1);
+  }
+
+
+
+  // events
+  public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
+    console.log(event, active);
+  }
+
+  public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
+    console.log(event, active);
+  }
+
+  public hideOne(): void {
+    const isHidden = this.chart?.isDatasetHidden(1);
+    this.chart?.hideDataset(1, !isHidden);
+  }
+
+
+
+  public changeColor(): void {
+    this.lineChartData.datasets[2].borderColor = 'green';
+    this.lineChartData.datasets[2].backgroundColor = `rgba(0, 255, 0, 0.3)`;
+
+    this.chart?.update();
+  }
+
+  public changeLabel(): void {
+    const tmp = this.newLabel;
+    this.newLabel = this.lineChartData.datasets[2].label;
+    this.lineChartData.datasets[2].label = tmp;
+
+    this.chart?.update();
+  }
 }
 
