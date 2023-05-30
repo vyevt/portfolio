@@ -4,7 +4,7 @@
         <label for="checkbox-1" class="checkbox-custom-label"> </label>
     </div>
     <div class="company">
-        <div class="title">Company</div>
+        <div class="title"  >Company</div>
         <div class="options">Search</div>
 
     </div>
@@ -58,29 +58,29 @@
 
         <label for="{{index}}" class="checkbox-custom-label"> </label>
     </div>
-    <div class="company">
+    <div class="company" [title]=corp.name >
         <img src="{{corp.companyphoto}}">
          <div class="text"> {{corp.name}} </div> 
 
     </div>
-    <div class="status" [ngClass]="corp.status">
+    <div class="status"  [title]=corp.status [ngClass]="corp.status">
         <div class="text">{{corp.status}}</div>
     </div>
-    <div class="type">
+    <div class="type" [title]=corp.tybe >
         <div class="text"> {{corp.tybe}}</div>
 
     </div>
-    <div class="sku">
+    <div class="sku" [title]=corp.SKU>
         <div class="text">{{corp.SKU}}</div>
 
     </div>
-    <div class="contact">
+    <div class="contact" [title]=corp.contactname>
              <img src="  {{corp.contactphoto}}">
              <div class="text"> {{corp.contactname}}</div>
          
         
     </div>
-    <div class="price">
+    <div class="price" [title]=corp.name >
         <div class="text">{{corp.price}} USD</div>
           
     </div>

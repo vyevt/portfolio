@@ -187,16 +187,7 @@
     display: flex;
     height: 48px;
 
-    .company:hover,
-    .type:hover,
-    .contact:hover,
-    .price:hover,
-    .status:hover,
-    .sku:hover,
-    .action:hover {
-        width: fit-content;
-        overflow: visible;
-    }
+    
 
     .company,
     .contact {
