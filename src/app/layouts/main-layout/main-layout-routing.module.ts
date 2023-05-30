@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
  import { MainLayoutComponent } from './main-layout.component';
 import { ProfileCardComponent } from 'src/app/feature/user-profile/profile-card/profile-card.component';
-import { TaskComponent } from 'src/app/feature/task/task.component';
 
 const routes: Routes = [
   {
@@ -18,7 +17,8 @@ const routes: Routes = [
       },
       {
         path: 'user-task',
-        component:TaskComponent,
+        loadChildren: () => import('../../feature/task/task.module')
+          .then(m => m.TaskModule),
         outlet: 'user_task'
       }
       //{path: <base-path>, component: <component>, outlet: <target_outlet_name>}
