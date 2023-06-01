@@ -14,8 +14,10 @@ export class MainLayoutComponent implements OnInit {
   statsActivate: boolean = false
   statisticsActivate: boolean = false
   settingsActivate: boolean = false
-
+  shouldShowSpinner = true;
   ngOnInit(): void {
+   
+   
     this.router.navigate([
       {
         outlets:
@@ -38,7 +40,10 @@ export class MainLayoutComponent implements OnInit {
           user_card: 'user-card'
 
         }
-      }])
+      }]).then(()=>{
+      this.shouldShowSpinner = false;
+        
+      })
     console.log(this.router)
   }
   constructor(

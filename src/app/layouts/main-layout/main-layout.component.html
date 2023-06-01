@@ -17,8 +17,10 @@
   <a *ngIf="!settingsActivate" [routerLink]="['./',{outlets:{settings:['settings']}}]">Show settings</a>
   <a *ngIf="settingsActivate" [routerLink]="['./',{outlets:{settings:null}}]">Hide settings</a>
 </nav>
-<aside> <router-outlet (activate)="cardActivate=true" (deactivate)="cardActivate=false"
-    name="user_card"></router-outlet>
+<app-spinner *ngIf="shouldShowSpinner else page"></app-spinner>
+<ng-template  #page>
+<aside>
+  <router-outlet (activate)="cardActivate=true" (deactivate)="cardActivate=false" name="user_card"></router-outlet>
   <router-outlet (activate)="taskActivate=true" (deactivate)="taskActivate=false" name="user_task"></router-outlet>
 </aside>
 <main>
@@ -32,9 +34,11 @@
         name="visits"></router-outlet>
     </div>
   </div>
- <div>
-  <router-outlet (activate)="settingsActivate=true" (deactivate)="settingsActivate=false"
-    name="settings"></router-outlet>
-</div>
+  <div>
+    <router-outlet (activate)="settingsActivate=true" (deactivate)="settingsActivate=false"
+      name="settings"></router-outlet>
+  </div>
 </main>
 <router-outlet></router-outlet>
+
+</ng-template >

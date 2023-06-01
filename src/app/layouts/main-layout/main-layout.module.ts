@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CsgoLayoutRoutingModule } from './main-layout-routing.module';
 import { MainLayoutComponent } from './main-layout.component';
+import { SpinerModule } from 'src/app/shared/spiner/spiner.module';
  
 
 @NgModule({
@@ -12,7 +13,7 @@ import { MainLayoutComponent } from './main-layout.component';
   imports: [
     CommonModule,
     CsgoLayoutRoutingModule,
-     
+    SpinerModule
   ]
 })
 export class MainLayoutModule { }
